@@ -1,0 +1,24 @@
+[
+    {
+        "id": 101,
+        "imgsrc": "../images/photo111.png",
+        "name": "Nitin Yogacharya",
+        "description": "Indian Chiropractic"
+        
+        
+    },
+    {
+        "id": 102,
+        "imgsrc": "../images/photo2.jpg",
+        "name": "yogi mahadevan",
+        "description": "some small paragraph"
+    },
+    {
+        "id": 103,
+        "imgsrc": "../images/photo3.jpg",
+        "name": "yogini soumita",
+        "description": "some small paragraph"
+    }
+
+    
+]
