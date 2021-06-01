@@ -1,11 +1,9 @@
-#root
-  > div
-  > div
-  > div
-  > div.MuiTableContainer-root.makeStyles-container-12
-  > table
-  > thead
-  > tr
-  > th:nth-child(1) {
-  background-color: aqua !important;
+.submit-btn:focus {
+  background-color: black !important;
+  color: white;
+}
+
+.timing-chart {
+  display: flex;
+  flex-direction: row;
 }
