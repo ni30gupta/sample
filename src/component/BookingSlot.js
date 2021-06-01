@@ -1,7 +1,8 @@
-import "./BookingSlot.css"
+// import "./BookingSlot.css"
 import { Table, Row, Button, Col, Container, InputGroup } from 'react-bootstrap'
 import { Typography } from "@material-ui/core"
 import React from "react"
+import { Link } from "react-router-dom"
 
 
 
@@ -40,6 +41,10 @@ export default class BookingSlot extends React.Component {
                 this.setState({ bookedClass: array });
             }
         }
+    }
+
+    sendBookingtoBackend = () => {
+        console.log("booking ")
     }
 
 
@@ -137,7 +142,9 @@ export default class BookingSlot extends React.Component {
                         </tbody>
                     </Table>
                 </Row>
-                <Button className="my-4" size="large" >  Confirm Booking</Button>
+                <Link to="/confirmslot">
+                    <Button onClick={this.sendBookingtoBackend} className="my-4" size="large" >  Confirm Booking</Button>
+                </Link>
             </Container>
         )
     }
