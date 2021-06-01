@@ -10,19 +10,30 @@ export default class BookingProcess extends React.Component {
         super(props)
 
         this.state = {
-            value: "time"
+            bookedClass: [],
+            batch1Morning: "",
+            batch1Evening: ""
+
         }
     }
 
-    handleChange(event) {
-        this.setState({ value: event.target.value });
-    }
+
     handleSubmit(event) {
-        alert('Your Session will be: ' + this.state.value);
-        event.preventDefault();
+        // event.preventDefault();
+        console.log(event.target.value)
+
     }
 
+
+    submitClass = () => {
+
+
+        this.setState({ bookedClass: [...this.state.bookedClass, this.state.batch1Evening, this.state.batch1Morning] },
+            () => console.log(this.state.bookedClass))
+
+    }
     render() {
+        const data = { batch: "01-jun to 07 Jun" }
         console.log(this.state.value)
         return (
             <div>
@@ -41,23 +52,23 @@ export default class BookingProcess extends React.Component {
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>01-jun to 07 Jun</td>
+                            <td>{data.batch}</td>
                             <td>
-                                <select value={this.state.value} onChange={(e) => this.handleChange(e)} className="form-select form-select-sm" aria-label=".form-select-sm example">
-                                    <option value="0" selected >Select Slot</option>
-                                    <option value="1">6:00 to 7:00</option>
-                                    <option value="2">7:00 to 8:00</option>
+                                <select onChange={(e) => this.setState({ batch1Morning: e.target.value })} className="form-select form-select-sm" aria-label=".form-select-sm example">
+                                    <option value="" selected >Select Slot</option>
+                                    <option value={`${data.batch}_Morning_6:00 to 7:00`} >6:00 to 7:00</option>
+                                    <option value={`${data.batch}_Morning_7:00 to 8:00`} >7:00 to 8:00</option>
                                 </select>
                             </td>
                             <td>
-                                <select value={this.state.value} onChange={this.handleChange} className="form-select form-select-sm" aria-label=".form-select-sm example">
+                                <select onChange={(e) => this.setState({ batch1Evening: e.target.value })} className="form-select form-select-sm" aria-label=".form-select-sm example">
                                     <option selected >Select Slot</option>
-                                    <option value="1">5:00 to 6:00</option>
-                                    <option value="2">6:00 to 7:00</option>
+                                    <option value={`${data.batch}_Evening_5:00 to 6:00`} >5:00 to 6:00</option>
+                                    <option value={`${data.batch}_Evening_6:00 to 7:00`}>6:00 to 7:00</option>
                                 </select>
                             </td>
                             <td>
-                                <button onClick={(e) => this.handleSubmit(e)} className='btn btn-sm btn-block btn-success'>Submit</button>
+                                <button className='btn btn-sm btn-block btn-success'>Submit</button>
                             </td>
                         </tr>
 
@@ -155,6 +166,8 @@ export default class BookingProcess extends React.Component {
 
                     </tbody>
                 </Table>
+
+                <button onClick={this.submitClass}> Submit Selected batch</button>
             </div>
         )
     }
