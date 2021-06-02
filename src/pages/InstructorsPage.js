@@ -27,7 +27,7 @@ class InstructorsPage extends Component {
                 <p>{post.description}</p>
                 <p>
                   <a className="btn btn-secondary" href="/101">
-                    <Link to={`/${post.id}`} style={{ color: "white" }}>
+                    <Link to={`/${post.id}/profile`} style={{ color: "white" }}>
                       {" "}
                       View details &raquo;
                     </Link>

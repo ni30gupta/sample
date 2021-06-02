@@ -269,7 +269,7 @@ function ProfilePage(profile) {
             data.buttons.map((button) => {
               return (
 
-                <Link to={`/${button}`} >
+                <Link to={`/booking/${data.id}/${button}`} >
                   <BtnButton variant="outline-primary">{button}</BtnButton>
                 </Link>
 

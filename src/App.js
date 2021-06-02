@@ -18,10 +18,10 @@ function App() {
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/instructors" component={InstructorsPage} />
-          <Route exact path="/booking" component={BookingSlot} />
+          {/* <Route exact path="/booking" component={BookingSlot} /> */}
           <Route exact path="/confirmslot" component={ConfrimSlotPage} />
-          <Route exact path="/datepicker" component={BookingProcess} />
-          <Route exact path="/:profileId" component={ProfilePage} />
+          <Route exact path="/booking:profileId" component={BookingProcess} />
+          <Route exact path="/:profileId/profile" component={ProfilePage} />
 
         </Switch>
         <Footer />

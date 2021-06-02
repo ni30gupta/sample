@@ -2,7 +2,7 @@ import { Dropdown } from 'bootstrap'
 import React from 'react'
 import { Col, Container, Button, DropdownButton, Row, Table } from 'react-bootstrap'
 
-import { tuterSchedule, timing } from '../API/tutorschedule'
+import { tuterSchedule } from '../API/tutorschedule'
 import './BookingProcess.css'
 
 
@@ -31,6 +31,9 @@ export default class BookingProcess extends React.Component {
 
 
     render() {
+        const [data] = tuterSchedule.filter(
+            (user) => user.profileId === this.props.match.params.profileId
+          );
         return (
             <Container>
                 <Row className="d-flex justify-between">
@@ -38,7 +41,7 @@ export default class BookingProcess extends React.Component {
                         <select onChange={(e) => this.setState({ dateRange: e.target.value })} >
                             <option value="none" selected>Batch Date</option>
                             {
-                                tuterSchedule.map((data) => {
+                                tuterSchedule[0].schedule.map((data) => {
                                     return (
                                         <option value={data.batchDate} > {data.batchDate}</option>
                                     )
@@ -50,7 +53,7 @@ export default class BookingProcess extends React.Component {
                         <div className="timing-chart">
                             <h2>Morning</h2>
                             {
-                                timing.morningTime.map((time) => {
+                                tuterSchedule[0].timing.morningTime.map((time) => {
                                     return (
                                         <div>
                                             <Button onClick={(e) => this.setState({ morningTimeRange: e.target.innerHTML })} className="m-2 submit-btn" variant="outline-dark">{time}</Button>
@@ -62,7 +65,7 @@ export default class BookingProcess extends React.Component {
                         <div className="timing-chart">
                             <h2>Evening </h2>
                             {
-                                timing.eveningTime.map((time) => {
+                                tuterSchedule[0].timing.eveningTime.map((time) => {
                                     return (
                                         <div>
                                             <Button onClick={(e) => this.setState({ eveningTimeRange: e.target.innerHTML })} className="m-2 submit-btn" variant="outline-dark">{time}</Button>
