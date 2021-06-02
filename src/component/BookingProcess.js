@@ -25,7 +25,6 @@ export default class BookingProcess extends React.Component {
     setClasses = () => {
         this.classesBooked = { ...this.state }
         console.log(this.classesBooked)
-
     }
 
 

@@ -49,6 +49,9 @@ export const instructorDetails = [
         otherPrice: "Rs.5000/- Specific kriya package of 20 days",
       },
     },
+    buttons: [
+      "Book Class", "Book Consultant"
+    ]
   },
   {
     id: "102",
@@ -102,5 +105,9 @@ export const instructorDetails = [
         otherPrice: "Rs.5000/- Specific kriya package of 20 days",
       },
     },
+    buttons: [
+      "Book Class", "Book Consultant", "Book Workshop"
+    ]
   },
+
 ];

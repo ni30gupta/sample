@@ -19,9 +19,9 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 
 import { AiOutlineInstagram } from "react-icons/ai";
-import { FiFacebook, FiTwitter} from "react-icons/fi";
+import { FiFacebook, FiTwitter } from "react-icons/fi";
 
-function ProfilePage (profile) {
+function ProfilePage(profile) {
   const [data] = instructorDetails.filter(
     (user) => user.id === profile.match.params.profileId
   );
@@ -99,11 +99,9 @@ function ProfilePage (profile) {
             <Typography variant="h6">
               Experience : {data.experience} Years so far
             </Typography>
- <Link to='/booking'>
-        <BtnButton className="mt-4 " size="lg" >Book Slot
-         
-        </BtnButton>
-        </Link>
+
+            <a href="#classes"><BtnButton className="mt-4 " size="lg" >Go to Booking </BtnButton></a>
+
 
 
             {/* <Link to='/booking'>
@@ -266,10 +264,19 @@ function ProfilePage (profile) {
             {/* <BtnButton className="mt-4" size="lg" block>Book Now</BtnButton> */}
           </Col>
         </Row>
-        <Link to='/booking'>
-        <BtnButton className="mt-4 " size="lg" block>Book Slot
-        </BtnButton>
-        </Link>
+        <div id="classes" className="d-flex justify-content-around my-4">
+          {
+            data.buttons.map((button) => {
+              return (
+
+                <Link to={`/${button}`} >
+                  <BtnButton variant="outline-primary">{button}</BtnButton>
+                </Link>
+
+              )
+            })
+          }
+        </div>
       </Container>
     </div>
   );
