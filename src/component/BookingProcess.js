@@ -60,7 +60,7 @@ const BookingProcess = React.memo((profile) => {
                             datas.timing.morningTime.map((time) => {
                                 return (
                                     <div>
-                                        <Button onClick={(e) => setState({ morningTimeRange: e.target.innerHTML })} className="m-2 submit-btn" variant="outline-dark">{time}</Button>
+                                        <Button onClick={(e) => state.morningTimeRange= e.target.innerHTML } className="m-2 submit-btn" variant="outline-dark">{time}</Button>
                                     </div>
                                 )
                             })
@@ -72,7 +72,7 @@ const BookingProcess = React.memo((profile) => {
                             datas.timing.eveningTime.map((time) => {
                                 return (
                                     <div>
-                                        <Button onClick={(e) => setState({ eveningTimeRange: e.target.innerHTML })} className="m-2 submit-btn" variant="outline-dark">{time}</Button>
+                                        <Button onClick={(e) =>state.eveningTimeRange= e.target.innerHTML} className="m-2 submit-btn" variant="outline-dark">{time}</Button>
                                     </div>
                                 )
                             })
@@ -82,7 +82,7 @@ const BookingProcess = React.memo((profile) => {
 
             </Row>
             <div className="d-flex align-items-center justify-center">
-                <Button onClick={(e) => { console.log(state.dateRange) }} >Confirm Your Slot</Button>
+                <Button onClick={(e) => { console.log(state) }} >Confirm Your Slot</Button>
 
             </div>
         </Container >
