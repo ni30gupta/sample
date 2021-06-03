@@ -1,87 +1,93 @@
-import { Dropdown } from 'bootstrap'
-import React from 'react'
+import React, { useState } from 'react'
 import { Col, Container, Button, DropdownButton, Row, Table } from 'react-bootstrap'
 
 import { tuterSchedule } from '../API/tutorschedule'
 import './BookingProcess.css'
 
 
-export default class BookingProcess extends React.Component {
+const BookingProcess = React.memo((profile) => {
+    const [datas] = tuterSchedule.filter(
+        (user) => user.profileId === profile.match.params.profileId
+    );
 
-    constructor(props) {
-        super(props)
+    const [classesBooked, setClassesBooked] = useState({})
 
-        this.state = {
-            batchId: null,
-            dateRange: null,
-            morningTimeRange: null,
-            eveningTimeRange: null
+    // const [state, setState] = useState({
+    //     batchId: null,
+    //     dateRange: null,
+    //     morningTimeRange: null,
+    //     eveningTimeRange: null
+    // })
 
-        }
+    const state = {
+        batchId: null,
+        dateRange: null,
+        morningTimeRange: null,
+        eveningTimeRange: null
     }
-
-    classesBooked = {}
-
-    setClasses = () => {
-        this.classesBooked = { ...this.state }
-        console.log(this.classesBooked)
-    }
-
-
-
-
-    render() {
-        const [data] = tuterSchedule.filter(
-            (user) => user.profileId === this.props.match.params.profileId
-          );
+    const setState = (val) => {
         return (
-            <Container>
-                <Row className="d-flex justify-between">
-                    <Col >
-                        <select onChange={(e) => this.setState({ dateRange: e.target.value })} >
-                            <option value="none" selected>Batch Date</option>
-                            {
-                                tuterSchedule[0].schedule.map((data) => {
-                                    return (
-                                        <option value={data.batchDate} > {data.batchDate}</option>
-                                    )
-                                })
-                            }
-                        </select>
-                    </Col>
-                    <Col>
-                        <div className="timing-chart">
-                            <h2>Morning</h2>
-                            {
-                                tuterSchedule[0].timing.morningTime.map((time) => {
-                                    return (
-                                        <div>
-                                            <Button onClick={(e) => this.setState({ morningTimeRange: e.target.innerHTML })} className="m-2 submit-btn" variant="outline-dark">{time}</Button>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
-                        <div className="timing-chart">
-                            <h2>Evening </h2>
-                            {
-                                tuterSchedule[0].timing.eveningTime.map((time) => {
-                                    return (
-                                        <div>
-                                            <Button onClick={(e) => this.setState({ eveningTimeRange: e.target.innerHTML })} className="m-2 submit-btn" variant="outline-dark">{time}</Button>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
-                    </Col>
-
-                </Row>
-                <div className="d-flex align-items-center justify-center">
-                    <Button onClick={this.setClasses} >Confirm Your Slot</Button>
-
-                </div>
-            </Container>
+            console.log(val)
         )
     }
-}
+
+
+
+
+    console.log(state)
+    return (
+
+        <Container>
+
+
+            <Row className="d-flex justify-between">
+                <Col >
+                    <select onChange={(e) => state.dateRange = e.target.value} >
+                        <option value="none" selected>Batch Date</option>
+                        {
+                            datas.schedule.map((data) => {
+                                return (
+                                    <option value={data.batchDate} > {data.batchDate}</option>
+                                )
+                            })
+                        }
+                    </select>
+                </Col>
+                <Col>
+                    <div className="timing-chart">
+                        <h2>Morning</h2>
+                        {
+                            datas.timing.morningTime.map((time) => {
+                                return (
+                                    <div>
+                                        <Button onClick={(e) => setState({ morningTimeRange: e.target.innerHTML })} className="m-2 submit-btn" variant="outline-dark">{time}</Button>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                    <div className="timing-chart">
+                        <h2>Evening </h2>
+                        {
+                            datas.timing.eveningTime.map((time) => {
+                                return (
+                                    <div>
+                                        <Button onClick={(e) => setState({ eveningTimeRange: e.target.innerHTML })} className="m-2 submit-btn" variant="outline-dark">{time}</Button>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                </Col>
+
+            </Row>
+            <div className="d-flex align-items-center justify-center">
+                <Button onClick={(e) => { console.log(state.dateRange) }} >Confirm Your Slot</Button>
+
+            </div>
+        </Container >
+    )
+
+})
+
+export default BookingProcess

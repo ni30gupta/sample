@@ -50,7 +50,7 @@ export const instructorDetails = [
       },
     },
     buttons: [
-      "Book Class", "Book Consultant"
+      "Book_Class", "Book_Consultant"
     ]
   },
   {

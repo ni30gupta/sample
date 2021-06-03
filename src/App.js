@@ -20,8 +20,8 @@ function App() {
           <Route exact path="/instructors" component={InstructorsPage} />
           {/* <Route exact path="/booking" component={BookingSlot} /> */}
           <Route exact path="/confirmslot" component={ConfrimSlotPage} />
-          <Route exact path="/booking:profileId" component={BookingProcess} />
           <Route exact path="/:profileId/profile" component={ProfilePage} />
+          <Route exact path="/booking/:profileId/:classes_type" component={BookingProcess} />
 
         </Switch>
         <Footer />
