@@ -10,20 +10,28 @@ export default class Booking2 extends Component {
         super(props)
 
         this.state = {
-            sno: 1
+            sno: 1,
+            jsonData:{
+                dateRange: null,
+                time: null,
+                days: null,
+                price: null
+            }
         }
     }
 
     selected = (id) => {
+        let t = document.getElementById('t1').rows[id];
+        // console.log(t.cells)
+        for(let i=1; i<5; i++) {
+            // console.log( t.cells[i].innerText)
+            this.setState({jsonData.dateRange:})
 
-        document.querySelector(`#\\31 02 > form > table > tbody > tr:nth-child(${id})`).forEach((row, td) => {
-            console.log(row, td)
-        })
-
-
-
-
+        }
+       
     }
+
+
 
     // console.log( > td:nth-child(3) > p`).innerHTML);
     render() {
@@ -48,7 +56,7 @@ export default class Booking2 extends Component {
                 <Row>
                     <Col id="102" lg={8}>
                         <form action="/action_page.php">
-                            <Table striped bordered hover>
+                            <Table id= "t1" striped bordered hover>
                                 <thead>
                                     <tr>
                                         <th>Select</th>
