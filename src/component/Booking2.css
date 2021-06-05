@@ -7,3 +7,7 @@ input[type="radio"] {
 * {
   text-align: center;
 }
+
+.selectedClass {
+  background-color: aqua;
+}

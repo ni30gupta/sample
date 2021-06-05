@@ -10,6 +10,7 @@ import ProfilePage from "./pages/ProfilePage";
 import ConfrimSlotPage from "./pages/ConfrimSlotPage";
 import BookingProcess from "./component/BookingProcess";
 import Booking2 from "./component/Booking2";
+import PaymentPage from "./pages/PaymentPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/instructors" component={InstructorsPage} />
           {/* <Route exact path="/booking" component={BookingSlot} /> */}
           <Route exact path="/confirmslot" component={ConfrimSlotPage} />
+          <Route exact path="/payment" component={PaymentPage} />
           <Route exact path="/booking" component={Booking2} />
           <Route exact path="/:profileId/profile" component={ProfilePage} />
           {/* <Route exact path="/booking/:profileId/:classes_type" component={BookingProcess} /> */}
